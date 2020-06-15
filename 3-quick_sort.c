@@ -8,6 +8,7 @@
  * @low: index in array that begins partition
  * @high: index in array that ends partition
  * @size: amount of elements in array
+ * Return: new index at which to start new recursive partition
  */
 int partition(int *array, int low, int high, size_t size)
 {
