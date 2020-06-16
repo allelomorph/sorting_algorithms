@@ -55,6 +55,8 @@ void cocktail_sort_list(listint_t **list)
 			shake_range = checks;
 		if (swapped)
 			temp = temp->prev;
+		else
+			break;
 		shake_range--;
 		for (checks = 0; temp->prev && checks < shake_range; checks++)
 		{
@@ -70,5 +72,5 @@ void cocktail_sort_list(listint_t **list)
 		if (swapped)
 			temp = temp->next;
 		shake_range--;
-	} while (shake_range > 1);
+	} while (shake_range > 1 && swapped);
 }
