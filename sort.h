@@ -2,10 +2,17 @@
 #define SORT_H
 #include <stddef.h>
 
-/* manual definition of booleans in case of not using C99 */
-typedef int bool;
-#define true 1
-#define false 0
+/**
+ * enum bool_e - manual definition of booleans, in case C99 stdbool.h not
+ * available
+ * @false: logical 0
+ * @true: logical 1
+ */
+typedef enum bool_e
+{
+	false = 0,
+	true
+} bool;
 
 /**
  * struct listint_s - Doubly linked list node
@@ -45,5 +52,8 @@ void radix_sort(int *array, size_t size);
 void bitonic_sort(int *array, size_t size);
 void quick_sort_hoare(int *array, size_t size);
 /* void sort_deck(deck_node_t **deck); */
+
+/* cocktail_sort_list() helper */
+void dll_adj_swap(listint_t **list, listint_t *left, listint_t *right);
 
 #endif /* SORT_H */
