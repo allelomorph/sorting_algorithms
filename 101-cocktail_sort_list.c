@@ -1,5 +1,4 @@
 #include "sort.h"
-#include <limits.h>
 
 /**
  * dll_adj_swap - swaps two adjacent nodes of a doubly linked list
@@ -32,16 +31,16 @@ void dll_adj_swap(listint_t **list, listint_t *left, listint_t *right)
 void cocktail_sort_list(listint_t **list)
 {
 	bool first_loop = true, swapped;
-	int i = 0, shake_range, list_length;
+	int i = 0, shake_range = 1000000, comparisons;
 	listint_t *temp, *one, *two;
 
 	if (!list || !(*list) || !(*list)->next)
 	return;
 
 	temp = *list;
-	shake_range = INT_MAX;
 	do {
-		while (temp->next && i < shake_range)
+		comparisons = 0;
+		while (temp->next && comparisons < shake_range)
 		{
 			swapped = false;
 			one = temp;
@@ -54,17 +53,17 @@ void cocktail_sort_list(listint_t **list)
 			}
 			else
 				temp = temp->next;
+			comparisons++;
 			i++;
 		}
 		if (first_loop)
-			shake_range = list_length = i + 1;
+			shake_range = i;
 		first_loop = false;
 		if (swapped)
-		{
 			temp = temp->prev;
-			i--;
-		}
-		while (temp->prev && i >= list_length - shake_range)
+		comparisons = 0;
+		shake_range--;
+		while (temp->prev && comparisons < shake_range)
 		{
 			swapped = false;
 			one = temp->prev;
@@ -77,13 +76,11 @@ void cocktail_sort_list(listint_t **list)
 			}
 			else
 				temp = temp->prev;
-			i--;
+			comparisons++;
 		}
 		if (swapped)
-		{
 			temp = temp->next;
-			i++;
-		}
+		comparisons = 0;
 		shake_range -= 2;
-	} while (shake_range > 2);
+	} while (shake_range > 1);
 }
