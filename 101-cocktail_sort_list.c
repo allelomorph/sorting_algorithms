@@ -1,7 +1,12 @@
 #include "sort.h"
 #include <limits.h>
 
-void dll_adj_swap(listint_t **list, listint_t *left, listint_t *right);
+/**
+ * dll_adj_swap - swaps two adjacent nodes of a doubly linked list
+ * @list: doubly linked list of integers to be sorted
+ * @left: node closer to head, right->prev
+ * @right: node closer to tail, left->next
+ */
 void dll_adj_swap(listint_t **list, listint_t *left, listint_t *right)
 {
 	listint_t *swap;
