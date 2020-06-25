@@ -117,7 +117,7 @@ void quick_sort_hoare(int *array, size_t size)
  * (using first pivot):
  *
  * algorithm partition(A, lo, hi) is
- *   pivot := A[(hi + lo) / 2]
+ *   pivot := A[lo]
  *   i := lo - 1
  *   j := hi + 1
  *   loop forever

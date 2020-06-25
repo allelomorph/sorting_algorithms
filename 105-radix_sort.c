@@ -1,5 +1,4 @@
 #include "sort.h"
-#include <stdio.h>
 #include <stdlib.h>
 
 /**
@@ -9,7 +8,7 @@
 void init_bucket_count(int *bucket_count)
 {
 	int i;
-	/* init bucket member counters */
+
 	for (i = 0; i < 10; i++)
 		bucket_count[i] = 0;
 }
@@ -85,9 +84,9 @@ void into_array(int *array, size_t size, int **buckets, int *bucket_count)
 /**
  * radix_sort - Sorts array of integers in ascending order using a Radix sort
  * alogrithm starting with the LSD, the 'least significant (1s place) digit',
- * and sorting by next digit to left. Buckets dynamically allocated because
- * while max range of key variance (digits 0-9) is known, each bucket needs to
- * handle potentially `size` members.
+ * and sorting by next digit to left. Size of `bucket_count` here determined
+ * by max range of key variance (digits 0-9), other solutions may be needed for
+ * much larger ranges.
  * @array: array of values to be sorted
  * @size: number of elements in array
  */
